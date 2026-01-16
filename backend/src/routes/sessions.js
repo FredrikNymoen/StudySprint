@@ -1,5 +1,5 @@
-const express = require('express');
-const db = require('../db/database');
+import express from 'express';
+import db from '../db/database.js';
 
 const router = express.Router();
 
@@ -163,4 +163,4 @@ router.delete('/:id', (req, res) => {
     res.status(204).send();
 });
 
-module.exports = router;
+export default router;

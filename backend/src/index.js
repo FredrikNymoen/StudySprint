@@ -1,11 +1,11 @@
-const express = require('express');
-const cors = require('cors');
+import express from 'express';
+import cors from 'cors';
 
-const sprintsRouter = require('./routes/sprints');
-const sessionsRouter = require('./routes/sessions');
-const tagsRouter = require('./routes/tags');
-const goalsRouter = require('./routes/goals');
-const statsRouter = require('./routes/stats');
+import sprintsRouter from './routes/sprints.js';
+import sessionsRouter from './routes/sessions.js';
+import tagsRouter from './routes/tags.js';
+import goalsRouter from './routes/goals.js';
+import statsRouter from './routes/stats.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
