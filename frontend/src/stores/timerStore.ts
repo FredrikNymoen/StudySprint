@@ -10,6 +10,7 @@ interface TimerState {
     selectedSprintId: number | null;
 
     // Actions
+    setMode: (mode: 'pomodoro' | 'free') => void;
     startPomodoro: (duration?: number) => void;
     startFreeSession: () => void;
     pause: () => void;
@@ -29,6 +30,10 @@ export const useTimerStore = create<TimerState>((set, get) => ({
     timeElapsed: 0,
     startedAt: null,
     selectedSprintId: null,
+
+    setMode: (mode) => {
+        set({ mode });
+    },
 
     startPomodoro: (duration = DEFAULT_POMODORO_MINUTES) => {
         set({

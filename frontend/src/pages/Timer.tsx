@@ -20,6 +20,7 @@ export function Timer() {
         timeElapsed,
         startedAt,
         selectedSprintId,
+        setMode,
         startPomodoro,
         startFreeSession,
         pause,
@@ -67,7 +68,10 @@ export function Timer() {
         stop();
     };
 
-    const displayTime = mode === 'pomodoro' ? timeRemaining : timeElapsed;
+    // Show preview time when not running, actual time when running
+    const displayTime = isRunning
+        ? (mode === 'pomodoro' ? timeRemaining : timeElapsed)
+        : (mode === 'pomodoro' ? pomodoroMinutes * 60 : 0);
 
     return (
         <div className="max-w-md mx-auto space-y-6">
@@ -77,7 +81,7 @@ export function Timer() {
             {!isRunning && (
                 <div className="flex gap-2">
                     <button
-                        onClick={() => {}}
+                        onClick={() => setMode('pomodoro')}
                         className={`flex-1 py-2 rounded-lg font-medium transition-colors ${
                             mode === 'pomodoro'
                                 ? 'bg-indigo-600 text-white'
@@ -87,7 +91,7 @@ export function Timer() {
                         Pomodoro
                     </button>
                     <button
-                        onClick={() => {}}
+                        onClick={() => setMode('free')}
                         className={`flex-1 py-2 rounded-lg font-medium transition-colors ${
                             mode === 'free'
                                 ? 'bg-indigo-600 text-white'
