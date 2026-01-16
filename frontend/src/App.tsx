@@ -1,15 +1,10 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-
 function App() {
-
-
-  return (
-    <>
-      
-    </>
-  )
+    return (
+        <div>
+            <h1>StudySprint</h1>
+            <p>Frontend setup complete!</p>
+        </div>
+    );
 }
 
-export default App
+export default App;
