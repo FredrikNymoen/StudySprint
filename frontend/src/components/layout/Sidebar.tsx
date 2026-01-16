@@ -1,5 +1,4 @@
-import { NavLink, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import { useUIStore } from '../../stores';
 
 interface SidebarProps {
@@ -7,23 +6,14 @@ interface SidebarProps {
 }
 
 const navItems = [
-    { to: '/', label: 'Dashboard', icon: '📊', view: 'dashboard' as const },
-    { to: '/timer', label: 'Timer', icon: '⏱️', view: 'sessions' as const },
-    { to: '/sprints', label: 'Sprints', icon: '🎯', view: 'sprints' as const },
-    { to: '/stats', label: 'Statistikk', icon: '📈', view: 'stats' as const },
+    { to: '/', label: 'Dashboard', icon: '📊' },
+    { to: '/timer', label: 'Timer', icon: '⏱️' },
+    { to: '/sprints', label: 'Sprints', icon: '🎯' },
+    { to: '/stats', label: 'Statistikk', icon: '📈' },
 ];
 
 export function Sidebar({ onClose }: SidebarProps) {
-    const location = useLocation();
-    const { setActiveView, setSidebarOpen } = useUIStore();
-
-    // Update activeView when route changes
-    useEffect(() => {
-        const currentItem = navItems.find((item) => item.to === location.pathname);
-        if (currentItem) {
-            setActiveView(currentItem.view);
-        }
-    }, [location.pathname, setActiveView]);
+    const { setSidebarOpen } = useUIStore();
 
     // Close sidebar on mobile when navigating
     const handleNavClick = () => {
